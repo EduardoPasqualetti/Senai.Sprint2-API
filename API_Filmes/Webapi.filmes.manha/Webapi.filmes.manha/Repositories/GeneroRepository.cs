@@ -1,4 +1,5 @@
-﻿using Webapi.filmes.manha.Domains;
+﻿using System.Data.SqlClient;
+using Webapi.filmes.manha.Domains;
 using Webapi.filmes.manha.Interface;
 
 namespace Webapi.filmes.manha.Repositories
@@ -40,9 +41,56 @@ namespace Webapi.filmes.manha.Repositories
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Listar todos os objetos Generos
+        /// </summary>
+        /// <returns> Lista de objetos(Generos) </returns>
         public List<GeneroDomain> ListarTodos()
         {
-            throw new NotImplementedException();
+            // Cria uma lista de objetos(ListaGeneros) do tipo genero 
+            // Instancia
+            List<GeneroDomain> ListaGeneros = new List<GeneroDomain>();
+
+            // Declara a SqlConnection passando a string de conexao como parametro
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                // Declara a instrucao a ser executada 
+                string QuerySelectAll = "SELECT IdGenero, Nome FROM Genero";
+
+                // Abre a conexao com o banco de dados
+                con.Open();
+
+                // Declara o SqlDataReader para percorrer a tabela do banco
+                // essa variavel le as informacoes do banco de dados 
+                SqlDataReader rdr;
+
+                // Declara o SqlCommand passando a query que sera executado(QuerySelectAll) e a conexao com o banco(con)
+                using(SqlCommand cmd = new SqlCommand(QuerySelectAll, con)) 
+                { 
+                    //Executa a query e armazena os dados no rdr
+                    rdr = cmd.ExecuteReader();
+
+                    // se o rdr nao for nulo
+                    while(rdr.Read()) 
+                    {
+                        // instanciando
+                        GeneroDomain genero = new GeneroDomain()
+                        {
+                            // Atribui a propriedade IdGenero o valor recebido no rdr
+                            IdGenero = Convert.ToInt32(rdr[0]),
+
+                            // Atribui a propriedade Nome o valor recebido no rdr
+                            Nome = rdr["Nome"].ToString()
+
+                        };
+                        // Adiciona cada objeto dentro da lista
+                        ListaGeneros.Add(genero);
+                    }
+                }
+            }
+            // Retorna a lista concluida
+            return ListaGeneros;
         }
+
     }
 }
