@@ -28,6 +28,13 @@
             <param name="novoGenero">Objeto recebido na requisicao</param>
             <returns>status code 201(created)</returns>
         </member>
+        <member name="M:Webapi.filmes.manha.Controllers.GeneroController.Delete(System.Int32)">
+            <summary>
+            Endpoint que aciona o metodo de deletar genero
+            </summary>
+            <param name="id">Objeto recebido na requisicao</param>
+            <returns>Status code 200</returns>
+        </member>
         <member name="T:Webapi.filmes.manha.Domains.FilmeDomain">
             <summary>
             CLasse que representa a entidade Filme
@@ -151,6 +158,12 @@
             Cadastrar um novo Genero
             </summary>
             <param name="novoGenero">Objeto com as informacoes que serao cadastradas</param>
+        </member>
+        <member name="M:Webapi.filmes.manha.Repositories.GeneroRepository.Deletar(System.Int32)">
+            <summary>
+            Deletar um determinado Genero
+            </summary>
+            <param name="Id"> Id do genero a ser excluido</param>
         </member>
         <member name="M:Webapi.filmes.manha.Repositories.GeneroRepository.ListarTodos">
             <summary>

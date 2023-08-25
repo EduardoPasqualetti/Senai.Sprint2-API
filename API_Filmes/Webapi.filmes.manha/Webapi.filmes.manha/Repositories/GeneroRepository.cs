@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using System.Runtime.Intrinsics.Arm;
 using Webapi.filmes.manha.Domains;
 using Webapi.filmes.manha.Interface;
 
@@ -28,7 +29,40 @@ namespace Webapi.filmes.manha.Repositories
 
         public GeneroDomain BuscarPorId(int Id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+
+                string QueryBuscar = "SELECT * FROM Genero WHERE IdGenero =  @id";
+
+                SqlDataReader rdr;
+                // Declara o SQlCommand passando a query que sera executada e a conexao
+                using (SqlCommand cmd = new SqlCommand(QueryBuscar, con))
+                {
+                    cmd.Parameters.AddWithValue("@id", Id);
+
+                    rdr = cmd.ExecuteReader();
+
+                    con.Open();
+
+                    if (rdr.Read())
+                    {
+                        // instanciando
+                        GeneroDomain genero = new GeneroDomain()
+                        {
+                            // Atribui a propriedade IdGenero o valor recebido no rdr
+                            IdGenero = Convert.ToInt32(rdr[0]),
+
+                            // Atribui a propriedade Nome o valor recebido no rdr
+                            Nome = rdr["Nome"].ToString()
+
+                        }
+                    }
+
+
+                }
+            }
+
+
         }
 
 
@@ -41,7 +75,7 @@ namespace Webapi.filmes.manha.Repositories
             // Declara a SqlConnection passando a string de conexao como parametro
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
-                
+
                 string QueryInsert = "INSERT INTO Genero(Nome) VALUES (@Nome)";
 
                 // Declara o SQlCommand passando a query que sera executada e a conexao
@@ -58,9 +92,29 @@ namespace Webapi.filmes.manha.Repositories
             }
         }
 
+        /// <summary>
+        /// Deletar um determinado Genero
+        /// </summary>
+        /// <param name="Id"> Id do genero a ser excluido</param>
         public void Deletar(int Id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+
+                string QueryDelete = "DELETE FROM Genero WHERE IdGenero =  @id ";
+
+                // Declara o SQlCommand passando a query que sera executada e a conexao
+                using (SqlCommand cmd = new SqlCommand(QueryDelete, con))
+                {
+                    //Passa o valor do parametro @id
+                    cmd.Parameters.AddWithValue("@id", Id);
+
+                    // Abre a conexao com o banco de dados
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
 
@@ -88,13 +142,13 @@ namespace Webapi.filmes.manha.Repositories
                 SqlDataReader rdr;
 
                 // Declara o SqlCommand passando a query que sera executado(QuerySelectAll) e a conexao com o banco(con)
-                using(SqlCommand cmd = new SqlCommand(QuerySelectAll, con)) 
-                { 
+                using (SqlCommand cmd = new SqlCommand(QuerySelectAll, con))
+                {
                     //Executa a query e armazena os dados no rdr
                     rdr = cmd.ExecuteReader();
 
                     // se o rdr nao for nulo
-                    while(rdr.Read()) 
+                    while (rdr.Read())
                     {
                         // instanciando
                         GeneroDomain genero = new GeneroDomain()

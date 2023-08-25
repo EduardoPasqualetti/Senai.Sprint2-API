@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Webapi.filmes.manha.Domains;
 using Webapi.filmes.manha.Interface;
 using Webapi.filmes.manha.Repositories;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Webapi.filmes.manha.Controllers
 {
@@ -76,7 +77,7 @@ namespace Webapi.filmes.manha.Controllers
 
                 return StatusCode(201);
             }
-            catch (Exception ERRO) 
+            catch (Exception ERRO)
             {
                 return BadRequest(ERRO.Message);
             }
@@ -84,5 +85,46 @@ namespace Webapi.filmes.manha.Controllers
 
         }
 
+        /// <summary>
+        /// Endpoint que aciona o metodo de deletar genero
+        /// </summary>
+        /// <param name="id">Objeto recebido na requisicao</param>
+        /// <returns>Status code 200</returns>
+        [HttpDelete]
+
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                _generoRepository.Deletar(id);
+
+                return StatusCode(200);
+            }
+            catch (Exception ERRO)
+            {
+
+                return BadRequest(ERRO.Message);
+            }
+        }
+
+        /// <summary>
+        /// Endpoint que aciona o metodo de buscar um genero por id
+        /// </summary>
+        /// <param name="id">Objeto usado como parametro</param>
+        /// <returns>status code 200</returns>
+        [HttpPost]
+        public IActionResult BuscarPorId(int id)
+        {
+            try
+            {
+                _generoRepository.BuscarPorId(id);
+                return StatusCode(200);
+            }
+            catch (Exception ERRO)
+            {
+
+                return BadRequest(ERRO.Message);
+            }
+        }
     }
 }
