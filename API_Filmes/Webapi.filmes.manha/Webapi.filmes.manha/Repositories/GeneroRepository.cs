@@ -41,11 +41,15 @@ namespace Webapi.filmes.manha.Repositories
             // Declara a SqlConnection passando a string de conexao como parametro
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
-                string QueryInsert = "INSERT INTO Genero(Nome) VALUES ('" + novoGenero.Nome +  "')";
+                
+                string QueryInsert = "INSERT INTO Genero(Nome) VALUES (@Nome)";
 
                 // Declara o SQlCommand passando a query que sera executada e a conexao
                 using (SqlCommand cmd = new SqlCommand(QueryInsert, con))
                 {
+                    //Passa o valor do parametro @Nome 
+                    cmd.Parameters.AddWithValue("@Nome", novoGenero.Nome);
+
                     // Abre a conexao com o banco de dados
                     con.Open();
 

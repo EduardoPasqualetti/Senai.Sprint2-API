@@ -62,3 +62,5 @@ C:\Users\49802002810\Desktop\Senai.Sprint2-API\API_Filmes\Webapi.filmes.manha\We
 C:\Users\49802002810\Desktop\Senai.Sprint2-API\API_Filmes\Webapi.filmes.manha\Webapi.filmes.manha\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\49802002810\Desktop\Senai.Sprint2-API\API_Filmes\Webapi.filmes.manha\Webapi.filmes.manha\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\49802002810\Desktop\Senai.Sprint2-API\API_Filmes\Webapi.filmes.manha\Webapi.filmes.manha\obj\Debug\net7.0\Webapi.filmes.manha.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\49802002810\Desktop\Senai.Sprint2-API\API_Filmes\Webapi.filmes.manha\Webapi.filmes.manha\bin\Debug\net7.0\Webapi.filmes.manha.xml
+C:\Users\49802002810\Desktop\Senai.Sprint2-API\API_Filmes\Webapi.filmes.manha\Webapi.filmes.manha\obj\Debug\net7.0\Webapi.filmes.manha.xml

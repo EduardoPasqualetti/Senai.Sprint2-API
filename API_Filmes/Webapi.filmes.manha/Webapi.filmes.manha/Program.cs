@@ -1,11 +1,12 @@
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Adiciona o servico de controller
 builder.Services.AddControllers();
 
-// Adiciona o servico de Swagger
+// Adiciona kinformacoes sobre a API    
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
@@ -17,13 +18,12 @@ builder.Services.AddSwaggerGen(options =>
         {
             Name = "Eduardo Pasqualetti",
             Url = new Uri("https://github.com/EduardoPasqualetti")
-        },
-        License = new OpenApiLicense
-        {
-            Name = "Example License",
-            Url = new Uri("https://example.com/license")
         }
     });
+
+    // Configura o Swagger para usar o arquivo xml gerado
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
 
 var app = builder.Build();
