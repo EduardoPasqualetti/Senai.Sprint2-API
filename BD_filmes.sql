@@ -18,9 +18,9 @@ CREATE TABLE Filmes
 
 
 
-INSERT INTO Genero(Nome) VALUES ('Comedia'),('Terror')
+INSERT INTO Genero(Nome) VALUES ('Terror'),('Comedia'),('Acao'),('Suspense')
 
-INSERT INTO Filmes(IdGenero,Nome) VALUES (2,'Sorria'), (1,'Gente Grande')
+INSERT INTO Filmes(IdGenero,Nome) VALUES (3,'Jumanji'),(4,'Panico'),(3,'Velozes e Furiosos'),(2,'Sorria'), (1,'Gente Grande') 
 
 
 SELECT 
@@ -30,3 +30,5 @@ Genero.Nome as Genero
 FROM
 	Filmes 
 JOIN Genero on Genero.IdGenero = Filmes.IdGenero
+
+SELECT * FROM Genero

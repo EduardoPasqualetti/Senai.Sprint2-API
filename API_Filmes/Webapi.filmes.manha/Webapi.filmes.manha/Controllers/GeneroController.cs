@@ -42,7 +42,7 @@ namespace Webapi.filmes.manha.Controllers
         /// </summary>
         /// <returns>resposta para o usuario(front-end)</returns>
         [HttpGet]
-        public IActionResult ListarGenero() 
+        public IActionResult Get()
         {
 
             try
@@ -60,5 +60,29 @@ namespace Webapi.filmes.manha.Controllers
             }
 
         }
+
+        /// <summary>
+        /// Endpoint que aciona o metodo de cadastro de genero
+        /// </summary>
+        /// <param name="novoGenero">Objeto recebido na requisicao</param>
+        /// <returns>status code 201(created)</returns>
+        [HttpPost]
+        public IActionResult Post(GeneroDomain novoGenero)
+        {
+            try
+            {
+                // Chamando o metodo cadastrar passando o objeto como parametro
+                _generoRepository.Cadastrar(novoGenero);
+
+                return StatusCode(201);
+            }
+            catch (Exception ERRO) 
+            {
+                return BadRequest(ERRO.Message);
+            }
+
+
+        }
+
     }
-} 
+}
