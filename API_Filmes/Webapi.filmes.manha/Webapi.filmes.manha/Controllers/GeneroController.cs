@@ -98,7 +98,7 @@ namespace Webapi.filmes.manha.Controllers
             {
                 _generoRepository.Deletar(id);
 
-                return StatusCode(200);
+                return StatusCode(204);
             }
             catch (Exception ERRO)
             {
@@ -111,19 +111,46 @@ namespace Webapi.filmes.manha.Controllers
         /// Endpoint que aciona o metodo de buscar um genero por id
         /// </summary>
         /// <param name="id">Objeto usado como parametro</param>
-        /// <returns>status code 200</returns>
-        [HttpPost]
+        /// <returns>o genero buscado</returns>
+        [HttpGet("{id}")]
         public IActionResult BuscarPorId(int id)
         {
             try
             {
-                _generoRepository.BuscarPorId(id);
-                return StatusCode(200);
+                GeneroDomain generoBuscado = _generoRepository.BuscarPorId(id);
+
+                if (generoBuscado == null)
+                {
+                    return NotFound("Nenhum Genero Encontrado!");
+                }
+                
+                return Ok(generoBuscado);
             }
             catch (Exception ERRO)
             {
 
                 return BadRequest(ERRO.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Endpoint que  aciona o metodo de atualizar um objeto por id
+        /// </summary>
+        /// <param name="id">Id do objeto a ser modificado</param>
+        /// <param name="genero">Nome que substituira o nome antigo</param>
+        /// <returns>code 200</returns>
+        [HttpPut]
+        public IActionResult Atualizar(int id, GeneroDomain Nome)
+        {
+            try
+            {
+                _generoRepository.AtualizarIdUrl(id, Nome);
+                return Ok(); 
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
             }
         }
     }

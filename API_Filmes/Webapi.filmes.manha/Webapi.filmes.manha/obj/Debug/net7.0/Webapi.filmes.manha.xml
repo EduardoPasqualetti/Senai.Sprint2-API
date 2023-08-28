@@ -35,6 +35,21 @@
             <param name="id">Objeto recebido na requisicao</param>
             <returns>Status code 200</returns>
         </member>
+        <member name="M:Webapi.filmes.manha.Controllers.GeneroController.BuscarPorId(System.Int32)">
+            <summary>
+            Endpoint que aciona o metodo de buscar um genero por id
+            </summary>
+            <param name="id">Objeto usado como parametro</param>
+            <returns>o genero buscado</returns>
+        </member>
+        <member name="M:Webapi.filmes.manha.Controllers.GeneroController.Atualizar(System.Int32,Webapi.filmes.manha.Domains.GeneroDomain)">
+            <summary>
+            Endpoint que  aciona o metodo de atualizar um objeto por id
+            </summary>
+            <param name="id">Id do objeto a ser modificado</param>
+            <param name="genero">Nome que substituira o nome antigo</param>
+            <returns>code 200</returns>
+        </member>
         <member name="T:Webapi.filmes.manha.Domains.FilmeDomain">
             <summary>
             CLasse que representa a entidade Filme
@@ -152,6 +167,13 @@
                 - Windows : Integrated Security = True
                 - SqlServer: User Id = sa; Pwd = Senha
             </summary>
+        </member>
+        <member name="M:Webapi.filmes.manha.Repositories.GeneroRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Buscar um genero atraves do seu Id
+            </summary>
+            <param name="Id">Id do Genero</param>
+            <returns>Objeto buscado ou null caso nao seja encontrado</returns>
         </member>
         <member name="M:Webapi.filmes.manha.Repositories.GeneroRepository.Cadastrar(Webapi.filmes.manha.Domains.GeneroDomain)">
             <summary>

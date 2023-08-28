@@ -1,5 +1,6 @@
 ﻿using System.Data.SqlClient;
 using System.Runtime.Intrinsics.Arm;
+using System.Security.Cryptography;
 using Webapi.filmes.manha.Domains;
 using Webapi.filmes.manha.Interface;
 
@@ -22,47 +23,61 @@ namespace Webapi.filmes.manha.Repositories
             throw new NotImplementedException();
         }
 
-        public void AtualizarIdUrl(int Id, GeneroDomain genero)
-        {
-            throw new NotImplementedException();
-        }
-
-        public GeneroDomain BuscarPorId(int Id)
+        public void AtualizarIdUrl(int id, GeneroDomain Nome)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
+                string QueryUpdate = "UPDATE Genero SET Nome = @Nome WHERE IdGenero = @Idgenero;";
 
-                string QueryBuscar = "SELECT * FROM Genero WHERE IdGenero =  @id";
+                con.Open();
 
+                using (SqlCommand cmd = new SqlCommand(QueryUpdate, con))
+                {
+                    cmd.Parameters.AddWithValue("@Idgenero", id);
+                    cmd.Parameters.AddWithValue("@Nome", Nome);
+
+                    cmd.ExecuteNonQuery(); 
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Buscar um genero atraves do seu Id
+        /// </summary>
+        /// <param name="Id">Id do Genero</param>
+        /// <returns>Objeto buscado ou null caso nao seja encontrado</returns>
+        public GeneroDomain BuscarPorId(int id)
+        { 
+
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+
+                string QueryBuscar = "SELECT IdGenero, Nome FROM Genero WHERE IdGenero =  @IdGenero";
+                
+                con.Open();
+                
                 SqlDataReader rdr;
-                // Declara o SQlCommand passando a query que sera executada e a conexao
+
                 using (SqlCommand cmd = new SqlCommand(QueryBuscar, con))
                 {
-                    cmd.Parameters.AddWithValue("@id", Id);
+                    cmd.Parameters.AddWithValue("@IdGenero", id);
 
-                    rdr = cmd.ExecuteReader();
-
-                    con.Open();
+                     rdr = cmd.ExecuteReader();
 
                     if (rdr.Read())
                     {
-                        // instanciando
-                        GeneroDomain genero = new GeneroDomain()
+                        GeneroDomain generoBuscado  = new GeneroDomain
                         {
-                            // Atribui a propriedade IdGenero o valor recebido no rdr
-                            IdGenero = Convert.ToInt32(rdr[0]),
-
-                            // Atribui a propriedade Nome o valor recebido no rdr
-                            Nome = rdr["Nome"].ToString()
-
-                        }
+                            IdGenero = Convert.ToInt32(rdr["IdGenero"]) ,
+                            Nome = rdr["Nome"].ToString(),
+                        };
+                        return generoBuscado;
                     }
-
-
+                    return null;
                 }
             }
-
-
+            
         }
 
 
