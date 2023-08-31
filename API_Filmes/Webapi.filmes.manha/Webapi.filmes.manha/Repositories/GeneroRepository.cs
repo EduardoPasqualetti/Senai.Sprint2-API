@@ -18,23 +18,37 @@ namespace Webapi.filmes.manha.Repositories
         /// </summary>
 
         private string stringConexao = "Data Source = NOTE16-S14 ; Initial Catalog = Filmes_Manha; User Id = sa; Pwd = Senai@134";
-        public void AtualizarIdCorpo(GeneroDomain Genero)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void AtualizarIdUrl(int id, GeneroDomain Nome)
+        public void AtualizarIdCorpo(GeneroDomain genero)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
-                string QueryUpdate = "UPDATE Genero SET Nome = @Nome WHERE IdGenero = @Idgenero;";
+                string QueryUpdate = "UPDATE Genero SET Nome = @novoGenero WHERE IdGenero = @IdGenero;";
 
-                con.Open();
+                using (SqlCommand cmd = new SqlCommand(QueryUpdate, con))
+                {
+                    cmd.Parameters.AddWithValue("@IdGenero", genero.IdGenero);
+                    cmd.Parameters.AddWithValue("@novoGenero", genero.Nome);
+
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void AtualizarIdUrl(int id, GeneroDomain genero)
+        {
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string QueryUpdate = "UPDATE Genero SET Nome = @novoGenero WHERE IdGenero = @Idgenero;";
 
                 using (SqlCommand cmd = new SqlCommand(QueryUpdate, con))
                 {
                     cmd.Parameters.AddWithValue("@Idgenero", id);
-                    cmd.Parameters.AddWithValue("@Nome", Nome);
+                    cmd.Parameters.AddWithValue("@novoGenero", genero.Nome);
+
+                    con.Open();
 
                     cmd.ExecuteNonQuery(); 
                 }

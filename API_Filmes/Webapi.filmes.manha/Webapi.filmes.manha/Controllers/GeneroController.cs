@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata.Ecma335;
 using Webapi.filmes.manha.Domains;
 using Webapi.filmes.manha.Interface;
 using Webapi.filmes.manha.Repositories;
@@ -123,7 +124,7 @@ namespace Webapi.filmes.manha.Controllers
                 {
                     return NotFound("Nenhum Genero Encontrado!");
                 }
-                
+
                 return Ok(generoBuscado);
             }
             catch (Exception ERRO)
@@ -141,16 +142,62 @@ namespace Webapi.filmes.manha.Controllers
         /// <param name="genero">Nome que substituira o nome antigo</param>
         /// <returns>code 200</returns>
         [HttpPut]
-        public IActionResult Atualizar(int id, GeneroDomain Nome)
+        public IActionResult Atualizar(int id, GeneroDomain genero)
         {
             try
             {
-                _generoRepository.AtualizarIdUrl(id, Nome);
-                return Ok(); 
+                GeneroDomain generoBuscado = _generoRepository.BuscarPorId(genero.IdGenero);
+
+                if (generoBuscado != null)
+                {
+                    try
+                    {
+                        _generoRepository.AtualizarIdUrl(id, genero);
+                        return StatusCode(204);
+                    }
+                    catch (Exception ERRO)
+                    {
+                        return NotFound("Genero nao encontrado");
+                    }
+                }
+                throw new Exception();
+                
             }
             catch (Exception erro)
             {
-                return BadRequest(erro.Message);
+                return NotFound("Genero nao encontrado");
+            }
+        }
+
+        /// <summary>
+        /// Endpoint que aciona o metodo de atualizar um objeto pelo corpo
+        /// </summary>
+        /// <param name="genero"></param>
+        /// <returns></returns>
+
+        [HttpPut("{Genero}")]
+        public IActionResult AtualizarCorpo(GeneroDomain genero)
+        {
+            try
+            {
+                GeneroDomain generoBuscado = _generoRepository.BuscarPorId(genero.IdGenero);
+                if (generoBuscado != null)
+                {
+                    try
+                    {
+                        _generoRepository.AtualizarIdCorpo(genero);
+                        return StatusCode(204);
+                    }
+                    catch (Exception ERRO)
+                    {
+                        return BadRequest(ERRO.Message);
+                    }
+                }
+                throw new Exception();
+            }
+            catch (Exception ERRO)
+            {
+                return NotFound("Genero nao Encontrado");
             }
         }
     }

@@ -9,13 +9,12 @@ namespace Webapi.filmes.manha.Domains
     {
         public int IdFilme { get; set; }
 
+        public int IdGenero { get; set; }
+
         [Required(ErrorMessage = "O titulo do filme é obrigatorio")]
         public string? Titulo { get; set; }
 
-        [Required(ErrorMessage = "O filme deve possuir um genero")]
-        public int IdGenero { get; set; }
-
         // Referenciar a classe Genero 
-        public GeneroDomain? Genero { get; set; }
+        public GeneroDomain Genero { get; set; }
     }
 }
