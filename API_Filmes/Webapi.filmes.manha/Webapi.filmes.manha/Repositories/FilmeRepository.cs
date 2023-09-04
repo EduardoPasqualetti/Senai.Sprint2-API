@@ -61,7 +61,7 @@ namespace Webapi.filmes.manha.Repositories
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
 
-                string QueryBuscar = "SELECT Filmes.IdFilme, Filmes.IdGenero, Filmes.Titulo, Genero.Nome FROM Filmes LEFT JOIN Genero ON IdFilme =  @Idfilme AND Genero.IdGenero = Filmes.IdGenero";
+                string QueryBuscar = "SELECT Filmes.IdFilme, Filmes.IdGenero, Filmes.Titulo, Genero.Nome FROM Filmes LEFT JOIN Genero ON Genero.IdGenero = Filmes.IdGenero AND IdFilme =  @Idfilme";
 
                 con.Open();
 
@@ -85,7 +85,7 @@ namespace Webapi.filmes.manha.Repositories
 
                             Genero = new GeneroDomain()
                             {
-                                IdGenero = Convert.ToInt32(rdr[0]),
+                                IdGenero = Convert.ToInt32(rdr["IdGenero"]),
                                 Nome = rdr["Nome"].ToString()
                             }
                         };

@@ -15,24 +15,22 @@ namespace Webapi.filmes.manha.Repositories
             {
                 string QueryLogin = "SELECT Email, Senha, Permissao FROM Usuario WHERE Email = @email AND Senha = @senha";
 
-                con.Open();
-
-                SqlDataReader rdr;
+                con.Open();       
 
                 using (SqlCommand cmd = new SqlCommand(QueryLogin, con))
                 {
                     cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@senha", senha);
 
-                    rdr = cmd.ExecuteReader();
+                    SqlDataReader rdr = cmd.ExecuteReader();
 
                     if (rdr.Read())
                     {
                         UsuarioDomain user = new UsuarioDomain()
                         {
-                            Email = rdr["Email"].ToString(),
+                            IdUsuario= Convert.ToInt32(rdr["IdUsuario"]),
 
-                            Senha = rdr["Senha"].ToString(),
+                            Email = rdr["Email"].ToString(),
 
                             Permissao = rdr["Permissao"].ToString()
                         };

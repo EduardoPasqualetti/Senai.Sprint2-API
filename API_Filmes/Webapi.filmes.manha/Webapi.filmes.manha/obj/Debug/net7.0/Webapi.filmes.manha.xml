@@ -99,7 +99,7 @@
             <param name="genero"></param>
             <returns></returns>
         </member>
-        <member name="M:Webapi.filmes.manha.Controllers.UsuarioController.Get(System.String,System.String)">
+        <member name="M:Webapi.filmes.manha.Controllers.UsuarioController.Get(Webapi.filmes.manha.Domains.UsuarioDomain)">
             <summary>
             Endpoint que aciona o metodo de login
             </summary>
