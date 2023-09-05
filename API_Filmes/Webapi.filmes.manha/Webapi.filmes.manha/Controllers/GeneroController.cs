@@ -146,6 +146,7 @@ namespace Webapi.filmes.manha.Controllers
         /// <param name="genero">Nome que substituira o nome antigo</param>
         /// <returns>code 200</returns>
         [HttpPut]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Atualizar(int id, GeneroDomain genero)
         {
             try
@@ -180,6 +181,7 @@ namespace Webapi.filmes.manha.Controllers
         /// <returns></returns>
 
         [HttpPut("{Genero}")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult AtualizarCorpo(GeneroDomain genero)
         {
             try

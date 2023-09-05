@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Webapi.filmes.manha.Domains;
 using Webapi.filmes.manha.Interface;
@@ -27,6 +28,7 @@ namespace Webapi.filmes.manha.Controllers
         /// </summary>
         /// <returns>resposta para o usuario(front-end)</returns>
         [HttpGet]
+        [Authorize(Roles = "Administrador,Comum")]
         public IActionResult Get()
         {
 
@@ -54,6 +56,7 @@ namespace Webapi.filmes.manha.Controllers
         /// <param name="id">id do filme a ser deletado</param>
         /// <returns>status code 204</returns>
         [HttpDelete]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Delete(int id)
         {
             try
@@ -76,6 +79,7 @@ namespace Webapi.filmes.manha.Controllers
         /// <param name="novoFilme">Filme que sera cadastrado</param>
         /// <returns>status code 201</returns>
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Post(FilmeDomain novoFilme)
         {
             try
@@ -97,6 +101,7 @@ namespace Webapi.filmes.manha.Controllers
         /// <param name="id">id do objeto a ser buscado</param>
         /// <returns>o filme buscado</returns>
         [HttpGet("{id}")]
+        [Authorize(Roles = "Administrador,Comum")]
         public IActionResult Get(int id)
         {
             try
@@ -125,6 +130,7 @@ namespace Webapi.filmes.manha.Controllers
         /// <param name="Filme">filme atualizado</param>
         /// <returns>status code 204</returns>
         [HttpPut]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Put(int id, FilmeDomain Filme)
         {
             try
@@ -158,6 +164,7 @@ namespace Webapi.filmes.manha.Controllers
         /// <param name="Filme">objeto que sera atualizado</param>
         /// <returns>status code 204</returns>
         [HttpPut("{Filme}")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Put(FilmeDomain Filme)
         {
             FilmeDomain filmeBuscado = _filmeRepository.BuscarPorId(Filme.IdFilme);
