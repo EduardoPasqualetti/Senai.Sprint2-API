@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
 using Webapi.filmes.manha.Domains;
@@ -44,6 +45,7 @@ namespace Webapi.filmes.manha.Controllers
         /// </summary>
         /// <returns>resposta para o usuario(front-end)</returns>
         [HttpGet]
+        [Authorize(Roles = "Administrador,Comum")]
         public IActionResult Get()
         {
 
@@ -69,6 +71,7 @@ namespace Webapi.filmes.manha.Controllers
         /// <param name="novoGenero">Objeto recebido na requisicao</param>
         /// <returns>status code 201(created)</returns>
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Post(GeneroDomain novoGenero)
         {
             try
@@ -92,7 +95,7 @@ namespace Webapi.filmes.manha.Controllers
         /// <param name="id">Objeto recebido na requisicao</param>
         /// <returns>Status code 200</returns>
         [HttpDelete]
-
+        [Authorize(Roles = "Administrador")]
         public IActionResult Delete(int id)
         {
             try
@@ -114,6 +117,7 @@ namespace Webapi.filmes.manha.Controllers
         /// <param name="id">Objeto usado como parametro</param>
         /// <returns>o genero buscado</returns>
         [HttpGet("{id}")]
+        [Authorize(Roles = "Administrador,Comum")]
         public IActionResult BuscarPorId(int id)
         {
             try

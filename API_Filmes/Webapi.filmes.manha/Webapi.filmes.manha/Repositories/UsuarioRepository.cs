@@ -13,7 +13,7 @@ namespace Webapi.filmes.manha.Repositories
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
-                string QueryLogin = "SELECT Email, Senha, Permissao FROM Usuario WHERE Email = @email AND Senha = @senha";
+                string QueryLogin = "SELECT IdUsuario, Email, Permissao FROM Usuario WHERE Email = @email AND Senha = @senha";
 
                 con.Open();       
 

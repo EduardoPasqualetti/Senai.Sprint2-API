@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -31,7 +32,8 @@ namespace Webapi.filmes.manha.Controllers
         /// <param name="Email">email de login</param>
         /// <param name="Senha">senha de login</param>
         /// <returns>usuario</returns>
-        [HttpGet]
+        [HttpPost]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Get(UsuarioDomain user)
         { 
             UsuarioDomain usuario = _usuarioRepository.Login(user.Email, user.Senha); 
