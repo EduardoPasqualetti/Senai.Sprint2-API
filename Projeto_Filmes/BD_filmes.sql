@@ -28,18 +28,12 @@ CREATE TABLE Usuario
 
 INSERT INTO Genero(Nome) VALUES ('Terror'),('Comedia'),('Acao'),('Suspense')
 
-INSERT INTO Filmes(IdGenero,Nome) VALUES (3,'Jumanji'),(4,'Panico'),(3,'Velozes e Furiosos'),(2,'Sorria'), (1,'Gente Grande') 
+INSERT INTO Filmes(IdGenero,Titulo) VALUES (3,'Jumanji'),(4,'Panico'),(3,'Velozes e Furiosos'),(2,'Sorria'), (1,'Gente Grande') 
 
-INSERT INTO Usuario(Email, Senha, Permissao) VALUES ('joao123@gmail.com','12345','User'),('admin@gmail.com','adm000','ADM')
+INSERT INTO Usuario(Email, Senha, Permissao) VALUES ('edu@gmail.com','12345','Comum'),('admin@gmail.com','adm000','Administrador')
 
 
-SELECT 
-Filmes.IdFilme as ID,
-Filmes.Nome as Filme,
-Genero.Nome as Genero
-FROM
-	Filmes 
-JOIN Genero on Genero.IdGenero = Filmes.IdGenero
+SELECT * FROM Filmes 
 
 SELECT * FROM Genero
 
