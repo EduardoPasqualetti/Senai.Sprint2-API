@@ -1,3 +1,4 @@
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -5,6 +6,34 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Adiciona o servico de controller
 builder.Services.AddControllers();
+
+// Adiciona o servico de Jwt Bearer (forma de autenticacao)
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultChallengeScheme = "JwtBearer";
+    options.DefaultAuthenticateScheme = "JwtBearer";
+})
+
+.AddJwtBearer("JwtBearer", options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("filmes-chave-autenticacao-webapi-dev")),
+        ClockSkew = TimeSpan.FromMinutes(5),
+        ValidIssuer = "webapi.filmes.manha",
+        ValidAudience = "webapi.filmes.manha"
+    };
+
+});
+    
+
+
+
+
+
 
 // Adiciona kinformacoes sobre a API    
 builder.Services.AddSwaggerGen(options =>
