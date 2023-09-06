@@ -31,11 +31,7 @@ builder.Services.AddAuthentication(options =>
     
 
 
-
-
-
-
-// Adiciona kinformacoes sobre a API    
+// Adiciona informacoes sobre a API    
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo

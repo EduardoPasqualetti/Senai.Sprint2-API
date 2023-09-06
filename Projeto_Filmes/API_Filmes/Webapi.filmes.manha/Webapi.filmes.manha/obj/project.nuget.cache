@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Wo7ug0h+J4wpA412JyZkQUF/Hg9I+nyUvGVP0V1PdNvwMURW2B6bfjf/yF7HbxJBvk61PlZOrA3pky6inRORgg==",
+  "dgSpecHash": "Nm13X8iprNUktNTtpeHdhj8nwhm/OGFEtU6NvFURiDsHZLjsLL8ZQ2FIUEied7t6t0ufGNpY9ypXmE8BhbFpMw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\49802002810\\Desktop\\Senai.Sprint2-API\\API_Filmes\\Webapi.filmes.manha\\Webapi.filmes.manha\\Webapi.filmes.manha.csproj",
+  "projectFilePath": "C:\\Users\\49802002810\\Desktop\\Senai.Sprint2-API\\Projeto_Filmes\\API_Filmes\\Webapi.filmes.manha\\Webapi.filmes.manha\\Webapi.filmes.manha.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\49802002810\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.10\\microsoft.aspnetcore.authentication.jwtbearer.7.0.10.nupkg.sha512",
     "C:\\Users\\49802002810\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

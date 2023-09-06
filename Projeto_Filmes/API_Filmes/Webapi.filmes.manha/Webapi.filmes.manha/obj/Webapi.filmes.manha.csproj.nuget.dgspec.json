@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\49802002810\\Desktop\\Senai.Sprint2-API\\API_Filmes\\Webapi.filmes.manha\\Webapi.filmes.manha\\Webapi.filmes.manha.csproj": {}
+    "C:\\Users\\49802002810\\Desktop\\Senai.Sprint2-API\\Projeto_Filmes\\API_Filmes\\Webapi.filmes.manha\\Webapi.filmes.manha\\Webapi.filmes.manha.csproj": {}
   },
   "projects": {
-    "C:\\Users\\49802002810\\Desktop\\Senai.Sprint2-API\\API_Filmes\\Webapi.filmes.manha\\Webapi.filmes.manha\\Webapi.filmes.manha.csproj": {
+    "C:\\Users\\49802002810\\Desktop\\Senai.Sprint2-API\\Projeto_Filmes\\API_Filmes\\Webapi.filmes.manha\\Webapi.filmes.manha\\Webapi.filmes.manha.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\49802002810\\Desktop\\Senai.Sprint2-API\\API_Filmes\\Webapi.filmes.manha\\Webapi.filmes.manha\\Webapi.filmes.manha.csproj",
+        "projectUniqueName": "C:\\Users\\49802002810\\Desktop\\Senai.Sprint2-API\\Projeto_Filmes\\API_Filmes\\Webapi.filmes.manha\\Webapi.filmes.manha\\Webapi.filmes.manha.csproj",
         "projectName": "Webapi.filmes.manha",
-        "projectPath": "C:\\Users\\49802002810\\Desktop\\Senai.Sprint2-API\\API_Filmes\\Webapi.filmes.manha\\Webapi.filmes.manha\\Webapi.filmes.manha.csproj",
+        "projectPath": "C:\\Users\\49802002810\\Desktop\\Senai.Sprint2-API\\Projeto_Filmes\\API_Filmes\\Webapi.filmes.manha\\Webapi.filmes.manha\\Webapi.filmes.manha.csproj",
         "packagesPath": "C:\\Users\\49802002810\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\49802002810\\Desktop\\Senai.Sprint2-API\\API_Filmes\\Webapi.filmes.manha\\Webapi.filmes.manha\\obj\\",
+        "outputPath": "C:\\Users\\49802002810\\Desktop\\Senai.Sprint2-API\\Projeto_Filmes\\API_Filmes\\Webapi.filmes.manha\\Webapi.filmes.manha\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\49802002810\\AppData\\Roaming\\NuGet\\NuGet.Config",
