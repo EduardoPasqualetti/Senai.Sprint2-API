@@ -12,7 +12,7 @@ namespace senai.inlock.webApi.Repositories
         {
             using (SqlConnection con = new SqlConnection(conexao))
             {
-                string QueryLogin = "SELECT Usuario.IdUsuario, Usuario.Email, TiposUsuario.Titulo FROM Usuario JOIN TiposUsuario ON Usuario.IdTipoUsuario = TiposUsuario.IdTipoUsuario WHERE Usuario.Email = @email and Usuario.Senha = @senha";
+                string QueryLogin = "SELECT IdUsuario,IdTipoUsuario, Email FROM Usuario  WHERE Usuario.Email = @email and Usuario.Senha = @senha";
 
                 using (SqlCommand cmd = new SqlCommand(QueryLogin, con))
                 {
@@ -30,11 +30,6 @@ namespace senai.inlock.webApi.Repositories
                             IdUsuario = Convert.ToInt32(rdr["IdUsuario"]),
                             IdTipoUsuario = Convert.ToInt32(rdr["IdTipoUsuario"]),
                             Email = rdr["Email"].ToString(),
-
-                            TipoUsuario = new TipoUsuarioDomain
-                            {
-                                Titulo = rdr["Titulo"].ToString()
-                            }
 
                         };
                         return user;

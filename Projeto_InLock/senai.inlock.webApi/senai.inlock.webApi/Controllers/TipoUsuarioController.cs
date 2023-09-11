@@ -5,7 +5,7 @@ using senai.inlock.webApi.Repositories;
 
 namespace senai.inlock.webApi.Controllers
 {
-    [Route("api/[controller")]
+    [Route("api/[controller]")]
 
     [ApiController]
 

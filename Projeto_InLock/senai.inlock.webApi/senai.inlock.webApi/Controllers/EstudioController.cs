@@ -8,7 +8,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace senai.inlock.webApi.Controllers
 {
-    [Route("api/[controller")]
+    [Route("api/[controller]")]
 
     [ApiController]
 
@@ -23,12 +23,8 @@ namespace senai.inlock.webApi.Controllers
             _estudioRepository = new EstudioRepository();
         }
 
-
-        /// <summary>
-        /// Endpoint que aciona o metodo de listar todos os Estudios
-        /// </summary>
-        /// <returns>Lista dos estudios</returns>
         [HttpGet]
+        [Authorize(Roles = "1,2")]
         public IActionResult Get() 
         {
             try
@@ -38,7 +34,7 @@ namespace senai.inlock.webApi.Controllers
                 {
                     return Ok(ListaEstudios);
                 }
-                return NotFound();
+                return NotFound("Nenhuma lista de estudios foi encontrada");
             }
             catch (Exception ERRO)
             {
@@ -46,12 +42,8 @@ namespace senai.inlock.webApi.Controllers
             }
         }
 
-        /// <summary>
-        /// Endpoint que aciona o metodo de cadastrar um estudio
-        /// </summary>
-        /// <param name="estudio"></param>
-        /// <returns></returns>
         [HttpPost]
+        [Authorize(Roles = "2")]
         public IActionResult Post(EstudioDomain estudio)
         {
             try
