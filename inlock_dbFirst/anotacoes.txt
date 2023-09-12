@@ -1,0 +1,6 @@
+Criar Projeto ASP.NET Core Web API
+Instalar as dependecias 
+
+ Microsoft.EntityFrameworkCore.SqlServer
+ Microsoft.EntityFrameworkCore.Design
+ Microsoft.EntityFrameworkCore.Tools
