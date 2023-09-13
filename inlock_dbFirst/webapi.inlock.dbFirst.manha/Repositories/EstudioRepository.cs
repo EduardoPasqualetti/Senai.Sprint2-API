@@ -11,22 +11,35 @@ namespace webapi.inlock.dbFirst.manha.Repositories
 
         public void Atualizar(Guid id, Estudio estudio)
         {
-            throw new NotImplementedException();
+            Estudio EstudioBuscado = ctx.Estudios.Find(id);
+
+            if (EstudioBuscado != null)
+            {
+                EstudioBuscado.Nome = estudio.Nome;
+            }
+
+            ctx.Estudios.Update(EstudioBuscado);
+            ctx.SaveChanges();
         }
 
         public Estudio BuscarPorId(Guid id)
         {
-            throw new NotImplementedException();
+            return ctx.Estudios.FirstOrDefault(e => e.IdEstudio == id)!;
         }
 
         public void Cadastrar(Estudio estudio)
         {
-            throw new NotImplementedException();
+            estudio.IdEstudio = Guid.NewGuid();
+
+            ctx.Estudios.Add(estudio);
+            ctx.SaveChanges();
         }
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            Estudio estudio = ctx.Estudios.Find(id);
+            ctx.Estudios.Remove(estudio);
+            ctx.SaveChanges();
         }
 
         public List<Estudio> Listar()
@@ -36,7 +49,7 @@ namespace webapi.inlock.dbFirst.manha.Repositories
 
         public List<Estudio> ListarComJogos()
         {
-           return ctx.Estudios.Include(e => e.Jogos).ToList(); 
+            return ctx.Estudios.Include(e => e.Jogos).ToList();
         }
     }
 }
