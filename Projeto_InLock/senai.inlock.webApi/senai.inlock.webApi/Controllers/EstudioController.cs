@@ -9,9 +9,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace senai.inlock.webApi.Controllers
 {
     [Route("api/[controller]")]
-
     [ApiController]
-
     [Produces("application/json")]
 
     public class EstudioController : Controller
