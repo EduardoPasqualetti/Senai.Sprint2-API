@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "inlock-CodeFirst", "inlock-CodeFirst.csproj", "{B06E31A2-0CAE-4C4A-9E58-F6FACB572134}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B06E31A2-0CAE-4C4A-9E58-F6FACB572134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B06E31A2-0CAE-4C4A-9E58-F6FACB572134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B06E31A2-0CAE-4C4A-9E58-F6FACB572134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B06E31A2-0CAE-4C4A-9E58-F6FACB572134}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1868769F-5801-474D-BC21-FCBCD94DAAAC}
+	EndGlobalSection
+EndGlobal
