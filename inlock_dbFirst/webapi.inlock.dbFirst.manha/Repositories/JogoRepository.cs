@@ -9,17 +9,28 @@ namespace webapi.inlock.dbFirst.manha.Repositories
         InLockContext ctx = new InLockContext();
         public void Atualizar(Guid id, Jogo jogo)
         {
-            throw new NotImplementedException();
+            Jogo JogoBuscado = ctx.Jogos.Find(id);
+
+            if (JogoBuscado != null)
+            {
+                JogoBuscado.Nome = jogo.Nome;
+            }
+
+            ctx.Jogos.Update(JogoBuscado);
+            ctx.SaveChanges();
         }
 
         public Jogo BuscarPorId(Guid id)
         {
-            throw new NotImplementedException();
+            return ctx.Jogos.FirstOrDefault(e => e.IdJogo == id)!;
         }
 
         public void Cadastrar(Jogo jogo)
         {
-            throw new NotImplementedException();
+            jogo.IdJogo = Guid.NewGuid();
+
+            ctx.Jogos.Add(jogo);
+            ctx.SaveChanges();
         }
 
         public void Deletar(Guid id)
