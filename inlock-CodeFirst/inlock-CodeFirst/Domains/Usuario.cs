@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace inlock_CodeFirst.Domains
 {
     [Table("Usuario")]
+    [Index(nameof(Email), IsUnique = true)] // cria um indice unico para o email, nao pode se repetir
     public class Usuario
     {
         [Key]

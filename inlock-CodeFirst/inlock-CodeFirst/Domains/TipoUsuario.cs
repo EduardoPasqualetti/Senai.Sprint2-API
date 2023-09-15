@@ -14,7 +14,5 @@ namespace inlock_CodeFirst.Domains
         [Required(ErrorMessage = "Tipo do usuario obrigatorio")]
         public string Titulo { get; set; }
 
-
-        public List<Usuario> Usuario { get; set; }
     }
 }
