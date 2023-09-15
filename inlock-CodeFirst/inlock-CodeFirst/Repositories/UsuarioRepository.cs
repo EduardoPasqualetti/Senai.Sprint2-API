@@ -25,23 +25,30 @@ namespace inlock_CodeFirst.Repositories
         }
 
         //public Usuario BuscarUsuario(string email, string senha)
-       // {
+        // {
         //    return BuscarUsuario(email, senha);
-       // }
+        // }
 
         public Usuario BuscarUsuario(string email, string senha)
         {
             try
             {
-                Usuario user = new Usuario();
-                user.Email = email;
-                user.Senha = senha;
+                Usuario buscado = ctx.Usuario.FirstOrDefault(e => e.Email == email)!;
 
-                return user;
+                if (buscado != null)
+                {
+                    bool confere = Criptografia.CompararHash(senha, buscado.Senha);
+
+                    if (confere == true)
+                    {
+                        return buscado;
+                    }
+                    
+                }
+                return null;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-
                 throw;
             }
         }
@@ -54,7 +61,7 @@ namespace inlock_CodeFirst.Repositories
 
                 ctx.Add(usuario);
 
-               ctx.SaveChanges();
+                ctx.SaveChanges();
             }
             catch (Exception)
             {

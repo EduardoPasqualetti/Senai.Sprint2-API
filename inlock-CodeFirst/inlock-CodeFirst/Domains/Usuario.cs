@@ -28,6 +28,6 @@ namespace inlock_CodeFirst.Domains
 
 
         [ForeignKey("IdTipoUsuario")]
-        public TipoUsuario TipoUsuario { get; set; }
+        public TipoUsuario? TipoUsuario { get; set; }
     }
 }

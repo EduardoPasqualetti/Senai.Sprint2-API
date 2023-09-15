@@ -33,19 +33,5 @@ namespace inlock_CodeFirst.Controllers
             }
         }
 
-        [HttpGet]
-        public IActionResult Get(string email, string senha)
-        {
-            try
-            {
-                _usuarioRepository.BuscarUsuario(email, senha);
-                return Ok();
-            }
-            catch (Exception e)
-            {
-
-                return BadRequest(e.Message);
-            }
-        }
     }
 }
