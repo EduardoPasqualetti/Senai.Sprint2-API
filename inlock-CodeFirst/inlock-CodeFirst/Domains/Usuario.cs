@@ -17,9 +17,9 @@ namespace inlock_CodeFirst.Domains
         public string? Email { get; set; }
 
 
-        [Column(TypeName = "VARCHAR(100)")]
+        [Column(TypeName = "VARCHAR(200)")]
         [Required(ErrorMessage = "Senha obrigatoria")]
-        [StringLength(20, MinimumLength = 4, ErrorMessage = "A senha deve conter de 6 a 20 caracteres")]
+        [StringLength(200, MinimumLength = 4, ErrorMessage = "A senha deve conter de 6 a 20 caracteres")]
         public string? Senha { get; set; }
 
 

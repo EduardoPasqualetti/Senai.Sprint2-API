@@ -2,6 +2,7 @@
 using inlock_CodeFirst.Domains;
 using inlock_CodeFirst.Interfaces;
 using inlock_CodeFirst.Utils;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace inlock_CodeFirst.Repositories
 {
@@ -22,9 +23,27 @@ namespace inlock_CodeFirst.Repositories
         {
             ctx = new InlockContext();
         }
+
+        //public Usuario BuscarUsuario(string email, string senha)
+       // {
+        //    return BuscarUsuario(email, senha);
+       // }
+
         public Usuario BuscarUsuario(string email, string senha)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Usuario user = new Usuario();
+                user.Email = email;
+                user.Senha = senha;
+
+                return user;
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
         }
 
         public void Cadastrar(Usuario usuario)
@@ -35,7 +54,7 @@ namespace inlock_CodeFirst.Repositories
 
                 ctx.Add(usuario);
 
-               
+               ctx.SaveChanges();
             }
             catch (Exception)
             {
