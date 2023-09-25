@@ -1,0 +1,23 @@
+ASP.NET core Web API   -- create new project
+
+marcar: solution and project in the same directory
+
+Pacotes:
+ Microsoft.EntityFrameworkCore.SqlServer
+ Microsoft.EntityFrameworkCore.Design
+ Microsoft.EntityFrameworkCore.Tools
+
+
+
+CRIAR O CONTEXTO E A FUNCAO DE CONEXAO
+
+
+Add-Migration “Nome da Migration“
+
+(Gerar a migration - estrutrura do banco no projeto)
+
+
+
+Update-Database
+
+(“Levar“ a migration para o servidor do banco via SSMS)
